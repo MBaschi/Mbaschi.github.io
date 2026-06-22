@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chiara Buscemi — Portfolio · Illustrazione · 2025/2026</title>
+<meta name="description" content="Portfolio del 3° anno di Illustrazione di Chiara Buscemi — Scuola Internazionale di Comics, Milano · 2025/2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PALETTE & TOKENS
+   Interfaccia neutra, derivata dal corpus: carta calda, inchiostro
+   quasi-nero e un accento prugna che fa da ponte tra i duotoni
+   viola e i neri/rossi dei lavori horror. Le opere portano il colore.
+   ============================================================ */
+:root{
+  --paper:#f4f0e8;
+  --paper-2:#efe9df;
+  --ink:#211d1a;
+  --muted:#736a61;
+  --line:rgba(33,29,26,.14);
+  --accent:#6b3f63;          /* prugna */
+  --accent-soft:#8d6386;
+  --shadow:0 18px 50px -22px rgba(33,29,26,.45);
+  --shadow-soft:0 10px 30px -16px rgba(33,29,26,.35);
+  --maxw:1180px;
+  --serif:"Fraunces", Georgia, "Times New Roman", serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+
+/* ============================================================ NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px clamp(18px,4vw,48px);
+  background:rgba(244,240,232,.82);
+  backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s, background .3s;
+}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav .brand{font-family:var(--serif);font-weight:600;font-size:1.05rem;letter-spacing:.01em;text-decoration:none}
+.nav .brand span{color:var(--accent)}
+.nav ul{display:flex;gap:clamp(14px,2.4vw,30px);list-style:none;margin:0;padding:0}
+.nav a.link{
+  text-decoration:none;font-size:.86rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);padding:4px 0;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s;
+}
+.nav a.link:hover{color:var(--ink);border-color:var(--accent)}
+.nav-toggle{display:none}
+
+/* ============================================================ SECTION */
+.section{padding:clamp(64px,9vw,130px) clamp(18px,5vw,56px)}
+.wrap{max-width:var(--maxw);margin:0 auto}
+.eyebrow{
+  font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+  font-weight:600;margin:0 0 .8em;
+}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0}
+h2.section-title{font-size:clamp(2rem,5vw,3.4rem);margin-bottom:.3em}
+.lead{font-size:clamp(1.05rem,1.6vw,1.32rem);color:#3a342f;max-width:62ch}
+
+/* ============================================================ COVER */
+.cover{
+  min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr;align-items:stretch;
+  border-bottom:1px solid var(--line);
+}
+.cover-text{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(80px,9vw,120px) clamp(24px,5vw,72px) clamp(48px,6vw,72px);
+}
+.cover-text .kicker{font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:1.4rem}
+.cover-text h1{font-size:clamp(2.8rem,7vw,5.2rem);letter-spacing:-.01em}
+.cover-text h1 em{font-style:italic;color:var(--accent)}
+.cover-role{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,2vw,1.5rem);color:var(--muted);margin:.5rem 0 2.2rem}
+.cover-title{font-size:.95rem;color:#3a342f;max-width:42ch;border-left:2px solid var(--accent);padding-left:14px;margin-bottom:2.4rem}
+.contacts{display:grid;gap:.55rem;font-size:.98rem}
+.contacts a,.contacts span{display:flex;gap:.7rem;align-items:baseline;text-decoration:none;color:var(--ink)}
+.contacts .lbl{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);min-width:88px;flex:0 0 88px}
+.contacts a:hover .val{color:var(--accent)}
+.cover-media{position:relative;background:var(--paper-2);overflow:hidden}
+.cover-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* segnaposto visibile se l'immagine manca */
+.cover-media .placeholder{
+  position:absolute;inset:24px;border:2px dashed var(--accent-soft);border-radius:4px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  color:var(--accent);background:var(--paper-2);gap:.4rem;padding:24px;
+}
+.cover-media .placeholder b{font-family:var(--serif);font-size:1.6rem}
+.cover-media .placeholder small{color:var(--muted);font-size:.8rem;max-width:24ch}
+
+/* ============================================================ BIO */
+.bio{background:var(--paper-2);border-bottom:1px solid var(--line)}
+.bio .wrap{max-width:780px}
+.bio p{font-family:var(--serif);font-size:clamp(1.2rem,2.3vw,1.7rem);line-height:1.5;color:#332e29;font-weight:400}
+.bio .influences{font-family:var(--sans);font-size:.95rem;color:var(--muted);margin-top:2rem;letter-spacing:.01em}
+
+/* ============================================================ INDICE LAVORI */
+.works-intro{border-bottom:1px solid var(--line)}
+.toc{margin-top:2.6rem;columns:2;column-gap:48px}
+@media(max-width:640px){.toc{columns:1}}
+.toc a{
+  display:flex;justify-content:space-between;gap:14px;text-decoration:none;
+  padding:.55rem 0;border-bottom:1px solid var(--line);break-inside:avoid;
+}
+.toc a:hover .t{color:var(--accent)}
+.toc .n{font-family:var(--serif);color:var(--accent);font-size:.85rem;flex:0 0 28px}
+.toc .t{flex:1}
+.toc .c{color:var(--muted);font-size:.8rem;text-align:right}
+
+/* ============================================================ WORK BLOCK */
+[id]{scroll-margin-top:86px}
+.work{padding:clamp(56px,8vw,100px) clamp(18px,5vw,56px);border-bottom:1px solid var(--line)}
+.work:nth-child(even){background:var(--paper-2)}
+.work .wrap{max-width:var(--maxw)}
+.scheda{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:clamp(28px,4vw,48px);max-width:760px}
+.scheda .top{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.scheda .num{font-family:var(--serif);font-size:1.05rem;color:var(--accent)}
+.scheda .corso{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.scheda h2{font-size:clamp(1.8rem,4vw,2.9rem)}
+.scheda h2 em{font-style:italic}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem 1.3rem;font-size:.86rem;color:var(--muted);margin-top:.2rem}
+.meta b{color:var(--ink);font-weight:600}
+.didascalia{font-size:1.02rem;color:#3a342f;max-width:64ch}
+.note{font-size:.88rem;color:var(--muted);font-style:italic;border-left:2px solid var(--accent-soft);padding-left:12px;max-width:62ch}
+
+/* media */
+figure{margin:0}
+figcaption{font-size:.84rem;color:var(--muted);margin-top:.7rem;line-height:1.45}
+figcaption .role{color:var(--accent);font-weight:600;letter-spacing:.04em}
+.stack{display:grid;gap:clamp(30px,5vw,64px)}
+.single{margin:0 auto;max-width:min(100%,820px)}
+.single.wide{max-width:100%}
+.grid{display:grid;gap:clamp(18px,3vw,34px)}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.grid.three{grid-template-columns:repeat(3,1fr)}
+.grid.four{grid-template-columns:repeat(4,1fr)}
+@media(max-width:760px){.grid.two,.grid.three,.grid.four{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}}
+.img-shadow img{box-shadow:var(--shadow-soft);border-radius:2px}
+.zoomable{cursor:zoom-in}
+
+/* bozze */
+.bozze{margin-top:clamp(34px,5vw,60px)}
+.bozze .label{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;
+  display:flex;align-items:center;gap:14px;margin-bottom:1.4rem}
+.bozze .label::after{content:"";flex:1;height:1px;background:var(--line)}
+.bozze .grid img{box-shadow:var(--shadow-soft);background:#fff;border-radius:2px}
+/* bozze: sottosezioni con striscia scorrevole orizzontale */
+.bozze-set{display:grid;gap:clamp(26px,4vw,44px)}
+.bozze-group .bz-title{font-family:var(--serif);font-style:italic;font-size:1.18rem;color:var(--accent);
+  margin:0 0 .9rem;font-weight:600}
+.bz-strip{display:flex;gap:clamp(12px,1.6vw,18px);overflow-x:auto;scroll-snap-type:x proximity;
+  padding:2px 2px 14px;scrollbar-width:thin;scrollbar-color:var(--accent-soft) transparent;
+  -webkit-overflow-scrolling:touch}
+.bz-strip::-webkit-scrollbar{height:8px}
+.bz-strip::-webkit-scrollbar-thumb{background:var(--accent-soft);border-radius:99px}
+.bz-strip figure{flex:0 0 clamp(200px,30%,280px);margin:0;scroll-snap-align:start}
+.bz-strip img{width:100%;height:auto;display:block;background:#fff;border-radius:2px;box-shadow:var(--shadow-soft)}
+#work-11 .bz-strip figure{flex:0 0 auto}
+#work-11 .bz-strip img{width:auto;height:clamp(200px,26vw,280px)}
+#work-14 .bz-strip figure{flex:0 0 auto}
+#work-14 .bz-strip img{width:auto;height:clamp(200px,26vw,280px)}
+#work-15 .bz-strip figure{flex:0 0 auto}
+#work-15 .bz-strip img{width:auto;height:clamp(200px,26vw,280px)}
+
+/* ============================================================ COMPARE SLIDER (B&N -> Colore) */
+.compare{position:relative;max-width:760px;margin:0 auto;--pos:50%;
+  box-shadow:var(--shadow);border-radius:2px;overflow:hidden;line-height:0;touch-action:none}
+.compare img{width:100%;display:block;pointer-events:none;-webkit-user-select:none;user-select:none}
+.compare .layer-bn{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.compare .divider{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:#fff;
+  transform:translateX(-1px);box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.compare .knob{position:absolute;top:50%;left:var(--pos);width:42px;height:42px;border-radius:50%;
+  transform:translate(-50%,-50%);background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.3);
+  display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:14px;pointer-events:none}
+.compare .knob::before{content:"‹ ›";letter-spacing:-2px;font-weight:700}
+.compare input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.compare .tag{position:absolute;bottom:12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;background:rgba(33,29,26,.55);padding:4px 9px;border-radius:99px;pointer-events:none}
+.compare .tag.l{left:12px}.compare .tag.r{right:12px}
+.compare-hint{text-align:center;font-size:.8rem;color:var(--muted);margin-top:.9rem}
+
+/* ============================================================ MOCKUP: LIBRO (cover portrait) */
+.mockup-book{perspective:1700px;display:flex;justify-content:center;padding:10px 0}
+.mockup-book .book{position:relative;transform:rotateY(-19deg);transform-style:preserve-3d;
+  box-shadow:38px 34px 60px -28px rgba(33,29,26,.55);border-radius:2px 5px 5px 2px;max-width:420px}
+.mockup-book .book img{border-radius:2px 5px 5px 2px}
+.mockup-book .book::before{content:"";position:absolute;top:0;bottom:0;left:0;width:14px;
+  background:linear-gradient(90deg,rgba(0,0,0,.34),rgba(0,0,0,.05) 60%,rgba(255,255,255,.18));border-radius:2px 0 0 2px}
+.mockup-book .book::after{content:"";position:absolute;top:1.5%;bottom:1.5%;right:-9px;width:9px;
+  background:repeating-linear-gradient(90deg,#efe9dd,#efe9dd 1px,#cdc6b8 2px,#efe9dd 3px);
+  border-radius:0 3px 3px 0;transform:rotateY(32deg);transform-origin:left center;box-shadow:2px 0 4px rgba(0,0,0,.2)}
+
+/* MOCKUP: doppia pagina / libro aperto */
+.mockup-spread{background:linear-gradient(#fff,#f6f2ea);padding:clamp(18px,3vw,40px);
+  box-shadow:var(--shadow);position:relative;border-radius:2px;max-width:1000px;margin:0 auto}
+.mockup-spread::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:46px;transform:translateX(-50%);
+  background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.14) 46%,rgba(0,0,0,.18) 50%,rgba(0,0,0,.14) 54%,rgba(0,0,0,0));
+  pointer-events:none;z-index:2}
+.mockup-spread img{position:relative;z-index:1;margin:0 auto}
+
+/* MOCKUP: pagine interne (doppia pagina, senza cornice) */
+.mockup-page{display:flex;justify-content:center;padding:clamp(14px,2.5vw,34px) 0;
+  background:radial-gradient(120% 120% at 50% 0,var(--paper-2),var(--paper))}
+.mockup-page .spread{position:relative;width:100%;max-width:1000px;line-height:0;
+  box-shadow:0 26px 54px -26px rgba(33,29,26,.55)}
+.mockup-page .spread img{position:relative;z-index:1;display:block;width:100%}
+/* piega centrale del libro, allineata alla piega dell'immagine */
+.mockup-page .spread::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:58px;
+  transform:translateX(-50%);z-index:2;pointer-events:none;
+  background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.14) 44%,rgba(0,0,0,.2) 50%,
+    rgba(0,0,0,.14) 56%,rgba(0,0,0,0))}
+
+/* MOCKUP: cover wraparound (retro · dorso · fronte) */
+.mockup-wrap{display:flex;justify-content:center;padding:clamp(18px,3vw,42px);
+  background:radial-gradient(120% 120% at 50% 0,var(--paper-2),var(--paper))}
+.mockup-wrap .wrap-cover{position:relative;width:100%;max-width:1000px;line-height:0;border-radius:2px;
+  box-shadow:38px 30px 60px -30px rgba(33,29,26,.5),0 0 0 1px var(--line)}
+.mockup-wrap .wrap-cover img{position:relative;z-index:1;border-radius:2px}
+/* il dorso: due pieghe verticali al centro, con la costa lievemente in ombra */
+.mockup-wrap .wrap-cover::before{content:"";position:absolute;top:0;bottom:0;left:50%;
+  transform:translateX(-50%);width:50px;z-index:2;pointer-events:none;
+  background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.22) 16%,rgba(0,0,0,.07) 30%,
+    rgba(0,0,0,.07) 70%,rgba(0,0,0,.22) 84%,rgba(0,0,0,0))}
+
+/* MOCKUP: poster */
+.mockup-poster{display:flex;justify-content:center;padding:clamp(16px,3vw,40px) 0;
+  background:radial-gradient(120% 120% at 50% 0,var(--paper-2),var(--paper))}
+.mockup-poster .frame{background:#fff;padding:clamp(14px,2vw,26px);box-shadow:var(--shadow);max-width:560px;border-radius:1px}
+.mockup-poster .frame img{box-shadow:0 0 0 1px var(--line)}
+
+/* token con trasparenza */
+.token{display:flex;justify-content:center}
+.token img{max-width:280px;filter:drop-shadow(0 14px 24px rgba(33,29,26,.28))}
+
+/* card (Eclissi) */
+.card-set{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+@media(max-width:760px){.card-set{grid-template-columns:1fr}}
+.card-col{display:grid;gap:14px;align-content:start}
+.card-col h3{font-size:1.15rem;font-style:italic}
+.card-col .pair{display:grid;grid-template-columns:1fr;gap:12px}
+.card-col img{border-radius:3px}
+
+/* missing images placeholder (Gelateria) */
+.missing{border:2px dashed var(--accent-soft);border-radius:4px;padding:clamp(34px,6vw,72px);
+  text-align:center;color:var(--muted);background:var(--paper-2);max-width:760px;margin:0 auto}
+.missing b{font-family:var(--serif);color:var(--accent);font-size:1.3rem;display:block;margin-bottom:.4rem}
+.missing code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;background:#fff;padding:2px 7px;border-radius:4px}
+
+/* gif badge */
+.gif-wrap{position:relative;max-width:760px;margin:0 auto}
+.gif-wrap .badge{position:absolute;top:12px;left:12px;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  background:rgba(33,29,26,.6);color:#fff;padding:4px 9px;border-radius:99px}
+
+/* ============================================================ RINGRAZIAMENTI */
+.thanks{min-height:90vh;display:flex;align-items:center;background:var(--ink);color:#f4f0e8;text-align:center}
+.thanks .wrap{max-width:720px}
+.thanks .eyebrow{color:var(--accent-soft)}
+.thanks h2{font-size:clamp(2.2rem,6vw,4rem);margin-bottom:.6em;color:#fff}
+.thanks p{font-family:var(--serif);font-size:clamp(1.15rem,2.2vw,1.5rem);line-height:1.55;color:#e9e1d6}
+.thanks .sign{margin-top:2.4rem;font-style:italic;color:var(--accent-soft)}
+.thanks .foot{margin-top:3rem;font-family:var(--sans);font-size:.82rem;color:#9b9085;letter-spacing:.04em}
+.thanks .foot a{color:#c9b9c4;text-decoration:none}
+
+/* ============================================================ LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(20,18,16,.92);display:none;
+  align-items:center;justify-content:center;padding:3vmin;cursor:zoom-out}
+.lb.open{display:flex}
+body.lb-lock{position:fixed;left:0;right:0;width:100%;overflow:hidden}
+.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;box-shadow:0 30px 80px rgba(0,0,0,.6);border-radius:2px}
+.lb .close{position:absolute;top:18px;right:24px;color:#fff;font-size:2rem;line-height:1;background:none;border:none;cursor:pointer;opacity:.8}
+.lb .lb-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.4rem;line-height:1;
+  background:rgba(0,0,0,.25);border:none;width:54px;height:54px;border-radius:50%;cursor:pointer;opacity:.85;
+  display:flex;align-items:center;justify-content:center;transition:opacity .2s,background .2s}
+.lb .lb-nav:hover{opacity:1;background:rgba(0,0,0,.4)}
+.lb .lb-nav.lb-prev{left:18px}
+.lb .lb-nav.lb-next{right:18px}
+.lb .lb-nav[hidden]{display:none}
+
+.skip{position:absolute;left:-999px}
+.scroll-top{position:fixed;right:22px;bottom:22px;z-index:40;width:46px;height:46px;border-radius:50%;
+  background:var(--accent);color:#fff;border:none;cursor:pointer;box-shadow:var(--shadow-soft);
+  opacity:0;pointer-events:none;transition:opacity .3s;font-size:1.1rem}
+.scroll-top.show{opacity:1;pointer-events:auto}
+
+/* ============================================================ RESPONSIVE */
+@media(max-width:880px){
+  .cover{grid-template-columns:1fr;min-height:auto}
+  .cover-media{min-height:62vh;order:-1}
+  .nav ul{display:none}
+}
+
+/* ============================================================ PRINT (PDF A4) */
+@media print{
+  :root{--paper:#fff;--paper-2:#fff}
+  html{font-size:11.5pt}
+  @page{size:A4;margin:14mm}
+  body{background:#fff;color:#000}
+  .nav,.scroll-top,.lb,.compare input,.compare-hint,.nav-toggle{display:none !important}
+  .section,.work{padding:0 0 8mm !important;border:none !important;background:#fff !important}
+  .cover{min-height:auto;display:block;border:none;page-break-after:always}
+  .cover-media{min-height:120mm;page-break-inside:avoid}
+  .cover-media img{position:relative}
+  .bio,.works-intro,.work,.thanks{page-break-before:auto}
+  .work{page-break-inside:avoid;break-inside:avoid}
+  .stack,figure,.compare,.mockup-book,.mockup-spread,.mockup-poster,.card-col,.bozze,.grid img,.gif-wrap{
+    break-inside:avoid;page-break-inside:avoid}
+  .scheda{break-after:avoid}
+  .mockup-book .book{transform:none;box-shadow:none}
+  .mockup-book .book::after{display:none}
+  .compare .layer-bn{clip-path:none;position:relative;margin-top:6mm}
+  .compare .divider,.compare .knob,.compare .tag{display:none}
+  .compare{box-shadow:none;overflow:visible}
+  .thanks{background:#fff;color:#000;min-height:auto}
+  .thanks h2,.thanks p{color:#000}
+  img{box-shadow:none !important}
+  a{text-decoration:none;color:#000}
+  .toc{columns:2}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#bio">Salta al contenuto</a>
+
+<!-- ===================== NAV ===================== -->
+<nav class="nav" id="nav">
+  <a class="brand" href="#top">Chiara <span>Buscemi</span></a>
+  <ul>
+    <li><a class="link" href="#bio">Bio</a></li>
+    <li><a class="link" href="#lavori">Lavori</a></li>
+    <li><a class="link" href="#contatti">Contatti</a></li>
+    <li><a class="link" href="#grazie">Grazie</a></li>
+  </ul>
+</nav>
+
+<!-- ===================== COPERTINA ===================== -->
+<header class="cover" id="top">
+  <div class="cover-text" id="contatti">
+    <div class="kicker">Portfolio · Illustrazione</div>
+    <h1>Chiara<br><em>Buscemi</em></h1>
+    <div class="cover-role">Illustratrice</div>
+    <p class="cover-title">3° anno — Scuola Internazionale di Comics, Milano · 2025/2026</p>
+    <div class="contacts">
+      <a href="mailto:chiarabuscemi098@gmail.com"><span class="lbl">Email</span><span class="val">chiarabuscemi098@gmail.com</span></a>
+      <a href="tel:+393335076393"><span class="lbl">Telefono</span><span class="val">333 507 6393</span></a>
+      <a href="https://instagram.com/persefone_art" target="_blank" rel="noopener"><span class="lbl">Instagram</span><span class="val">@persefone_art</span></a>
+    </div>
+  </div>
+  <div class="cover-media">
+    <!-- SEGNAPOSTO: sostituisci assets/cover/copertina.jpg con l'immagine di copertina -->
+    <img src="assets/cover/copertina.jpg" width="1600" height="2100" alt="Copertina del portfolio" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="placeholder" style="display:none">
+      <b>Copertina</b>
+      <small>Inserisci qui l'immagine: <code>assets/cover/copertina.jpg</code></small>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== BIOGRAFIA ===================== -->
+<section class="section bio" id="bio">
+  <div class="wrap">
+    <p class="eyebrow">Biografia</p>
+    <p>Ciao, sono Chiara, studentessa del terzo anno di Illustrazione alla Scuola Internazionale di Comics di Milano. Dopo il liceo artistico e una laurea in Beni Culturali, lavoro in un negozio di abbigliamento sportivo, ma tre anni fa ho sentito il bisogno di tornare a disegnare — ed eccomi qui. Sono curiosa, sempre in cerca di nuovi stimoli, e l'illustrazione per l'infanzia è il linguaggio in cui mi ritrovo di più: leggero in apparenza, ma capace di portare dentro qualcosa di vero. Lavoro spesso per sottrazione, partendo dal bianco e nero e lasciando che il colore arrivi solo quando ha qualcosa da dire.</p>
+    <p class="influences">Tra le mie influenze: Júlia Sardà, Felicita Sala e Beatrice Alemagna.</p>
+  </div>
+</section>
+
+<!-- ===================== INDICE LAVORI ===================== -->
+<section class="section works-intro" id="lavori">
+  <div class="wrap">
+    <p class="eyebrow">I lavori · 2025/2026</p>
+    <h2 class="section-title">Selezione del terzo anno</h2>
+    <p class="lead">Una raccolta dei progetti sviluppati durante i corsi del terzo anno, in ordine cronologico. Per ogni progetto trovi il lavoro definitivo e, dove presenti, gli studi preliminari.</p>
+    <nav class="toc" aria-label="Indice dei lavori">
+      <a href="#work-01"><span class="n">01</span><span class="t">Beth Harmon</span><span class="c">Photoshop Avanzato</span></a>
+      <a href="#work-02"><span class="n">02</span><span class="t">Cappellaio Matto</span><span class="c">Photoshop Avanzato</span></a>
+      <a href="#work-03"><span class="n">03</span><span class="t">Halloween</span><span class="c">Photoshop Avanzato</span></a>
+      <a href="#work-04"><span class="n">04</span><span class="t">Bambina d'Ombra</span><span class="c">Illustrazione da Incubo</span></a>
+      <a href="#work-05"><span class="n">05</span><span class="t">La Fuga di Logan</span><span class="c">Illustrare Mondi</span></a>
+      <a href="#work-06"><span class="n">06</span><span class="t">Simbiosi</span><span class="c">Illustrator Avanzato</span></a>
+      <a href="#work-07"><span class="n">07</span><span class="t">Rise — Packaging caffè</span><span class="c">Illustrator Avanzato</span></a>
+      <a href="#work-08"><span class="n">08</span><span class="t">La Casa in Fondo alla Strada</span><span class="c">Cover III</span></a>
+      <a href="#work-09"><span class="n">09</span><span class="t">Un Nuovo Inizio</span><span class="c">Cover III</span></a>
+      <a href="#work-10"><span class="n">10</span><span class="t">Eclissi al Sipario</span><span class="c">AI</span></a>
+      <a href="#work-11"><span class="n">11</span><span class="t">Journey — Rove</span><span class="c">ADV</span></a>
+      <a href="#work-12"><span class="n">12</span><span class="t">Flaytraps</span><span class="c">BoardGame</span></a>
+      <a href="#work-13"><span class="n">13</span><span class="t">Ansia</span><span class="c">Albo illustrato</span></a>
+      <a href="#work-14"><span class="n">14</span><span class="t">Un Drago nel Cortile</span><span class="c">Albo illustrato</span></a>
+      <a href="#work-15"><span class="n">15</span><span class="t">Eva non si veste</span><span class="c">Albo illustrato</span></a>
+      <a href="#work-16"><span class="n">16</span><span class="t">I Social Media sono più simili alle Sigarette o al Cibo Spazzatura?</span><span class="c">Magazine</span></a>
+      <a href="#work-17"><span class="n">17</span><span class="t">Il Pesce Sostenibile</span><span class="c">Magazine</span></a>
+      <a href="#work-18"><span class="n">18</span><span class="t">Summer Reading</span><span class="c">Magazine</span></a>
+      <a href="#work-19"><span class="n">19</span><span class="t">Spot</span><span class="c">Magazine</span></a>
+      <a href="#work-20"><span class="n">20</span><span class="t">Alcuni Progetti</span><span class="c">Secondo anno</span></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ===================== LAVORI ===================== -->
+<main>
+
+<!-- 01 BETH HARMON -->
+<article class="work" id="work-01">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">01</span><span class="corso">Photoshop Avanzato</span></div>
+      <h2><em>Beth Harmon</em></h2>
+      <div class="meta"><span>Tecnica · <b>Pittura digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Ritratto in pittura digitale di Beth Harmon, dallo studio tonale in bianco e nero al colore.</p>
+    </div>
+    <div class="compare" data-compare>
+      <img class="layer-color" src="assets/lavori/01-beth-harmon/colore.jpg" width="2480" height="3508" alt="Beth Harmon — versione a colori">
+      <div class="layer-bn"><img src="assets/lavori/01-beth-harmon/bn.jpg" width="1767" height="2500" alt="Beth Harmon — studio tonale in bianco e nero"></div>
+      <span class="tag l">Bianco e nero</span><span class="tag r">Colore</span>
+      <div class="divider"></div><div class="knob"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Trascina per passare dal bianco e nero al colore">
+    </div>
+    <p class="compare-hint">↔ Trascina il cursore per passare dallo studio in bianco e nero al colore.</p>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/01-beth-harmon/bozza-1.jpg" width="1767" height="2500" alt="Bozza di Beth Harmon"><figcaption>Studio preliminare.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 02 CAPPELLAIO MATTO -->
+<article class="work" id="work-02">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">02</span><span class="corso">Photoshop Avanzato</span></div>
+      <h2><em>Cappellaio Matto</em></h2>
+      <div class="meta"><span>Tecnica · <b>Pittura digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Ritratto in pittura digitale del Cappellaio Matto, dallo studio tonale in bianco e nero al colore.</p>
+    </div>
+    <div class="compare" data-compare>
+      <img class="layer-color" src="assets/lavori/02-cappellaio-matto/colore.jpg" width="2213" height="3435" alt="Cappellaio Matto — versione a colori">
+      <div class="layer-bn"><img src="assets/lavori/02-cappellaio-matto/bn.jpg" width="1611" height="2500" alt="Cappellaio Matto — studio tonale in bianco e nero"></div>
+      <span class="tag l">Bianco e nero</span><span class="tag r">Colore</span>
+      <div class="divider"></div><div class="knob"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Trascina per passare dal bianco e nero al colore">
+    </div>
+    <p class="compare-hint">↔ Trascina il cursore per passare dallo studio in bianco e nero al colore.</p>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/02-cappellaio-matto/bozza-1.jpg" width="1767" height="2500" alt="Bozza del Cappellaio Matto"><figcaption>Studio preliminare.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 03 HALLOWEEN -->
+<article class="work" id="work-03">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">03</span><span class="corso">Photoshop Avanzato</span></div>
+      <h2><em>Halloween</em></h2>
+      <div class="meta"><span>Tecnica · <b>Collage digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Locandina per una serata di Halloween in collage digitale. Uno scheletro con testa di zucca attende a un chiosco di pop-corn; i chicchi si trasformano in piccoli fantasmi.</p>
+    </div>
+    <div class="mockup-poster">
+      <div class="frame"><img class="zoomable" loading="lazy" src="assets/lavori/03-halloween/finale.jpg" width="1768" height="2500" alt="Locandina di Halloween"></div>
+    </div>
+    <figcaption style="text-align:center;margin-top:1rem"><span class="role">Mockup</span> · Locandina (poster).</figcaption>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/03-halloween/bozza.JPG" width="3508" height="4961" alt="Bozza Halloween"><figcaption>Studio preliminare.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 04 BAMBINA D'OMBRA -->
+<article class="work" id="work-04">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">04</span><span class="corso">Illustrazione da Incubo</span></div>
+      <h2><em>Bambina d'Ombra</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Progetto editoriale: copertina e illustrazioni interne per il libro <em>Bambina d'Ombra</em>.</p>
+    </div>
+    <div class="stack">
+      <figure class="single wide">
+        <div class="mockup-wrap"><div class="wrap-cover"><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/cover.jpg" width="4252" height="3009" alt="Copertina fronte e retro di Bambina d'Ombra"></div></div>
+        <figcaption><span class="role">Cover fronte/retro · mockup con dorso</span> · Retro, dorso e fronte: una forma d'ombra si solleva da una casa nei campi e si avvolge attorno al titolo.</figcaption>
+      </figure>
+      <figure class="single wide">
+        <div class="mockup-page"><div class="spread"><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/interno-1-capulera.jpg" width="3923" height="2822" alt="Interno: la vecchia Capulera"></div></div>
+        <figcaption><span class="role">Interno · doppia pagina</span> · La vecchia Capulera.</figcaption>
+      </figure>
+      <figure class="single wide">
+        <div class="mockup-page"><div class="spread"><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/interno-2-casa.jpg" width="3941" height="2869" alt="Interno: una casa isolata tra i campi"></div></div>
+        <figcaption><span class="role">Interno · doppia pagina</span> · Una casa isolata tra i campi, le pareti coperte d'edera e il portico in ombra. Bianco e nero.</figcaption>
+      </figure>
+      <figure class="single wide">
+        <div class="mockup-page"><div class="spread"><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/interno-3-locanda.jpg" width="4033" height="2922" alt="Interno: la protagonista entra nella locanda"></div></div>
+        <figcaption><span class="role">Interno · doppia pagina</span> · La protagonista entra nella locanda; la sua ombra si allunga tra le persone. Bianco e nero.</figcaption>
+      </figure>
+    </div>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="bozze-set">
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Cover</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/1-cover/bozza-1.JPG" width="2388" height="1744" alt="Bozza cover 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/1-cover/bozza-2.jpg" width="2500" height="1769" alt="Bozza cover 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/1-cover/bozza-3.jpg" width="4252" height="3009" alt="Bozza cover 3"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Capurela</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/2-capurela/bozza-1.jpg" width="2388" height="1744" alt="Bozza Capurela 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/2-capurela/bozza-2.jpg" width="2388" height="1744" alt="Bozza Capurela 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/2-capurela/bozza-3.jpg" width="4120" height="3009" alt="Bozza Capurela 3"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Casa</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/3-casa/bozza-1.jpg" width="2388" height="1744" alt="Bozza casa 1"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Locanda</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/4-locanda/bozza-1.JPG" width="2388" height="1744" alt="Bozza locanda 1"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Altre bozze interne</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/4-altre-bozze-interne/bozza-1.JPG" width="2388" height="1744" alt="Altra bozza interna 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/4-altre-bozze-interne/bozza-2.JPG" width="2388" height="1744" alt="Altra bozza interna 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/4-altre-bozze-interne/bozza-3.JPG" width="2388" height="1744" alt="Altra bozza interna 3"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/4-altre-bozze-interne/bozza-4.JPG" width="2388" height="1744" alt="Altra bozza interna 4"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/4-altre-bozze-interne/bozza-5.jpg" width="2388" height="1744" alt="Altra bozza interna 5"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/4-altre-bozze-interne/bozza-6.jpg" width="2388" height="1744" alt="Altra bozza interna 6"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/4-altre-bozze-interne/bozza-7.JPG" width="2388" height="1744" alt="Altra bozza interna 7"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/04-bambina-dombra/4-altre-bozze-interne/bozza-8.JPG" width="2388" height="1744" alt="Altra bozza interna 8"></figure>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 05 LA FUGA DI LOGAN -->
+<article class="work" id="work-05">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">05</span><span class="corso">Illustrare Mondi</span></div>
+      <h2><em>La Fuga di Logan</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno vettoriale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Due versioni di copertina per il libro <em>La Fuga di Logan</em>.</p>
+    </div>
+    <div class="grid two">
+      <figure>
+        <div class="mockup-book"><div class="book"><img class="zoomable" loading="lazy" src="assets/lavori/05-fuga-di-logan/versione-1.jpg" width="595" height="842" alt="La Fuga di Logan — versione 1"></div></div>
+        <figcaption><span class="role">Versione 1 · mockup libro</span> · Una mano emerge da un labirinto e stringe un cristallo. Grafica vettoriale, toni viola.</figcaption>
+      </figure>
+      <figure>
+        <div class="mockup-book"><div class="book"><img class="zoomable" loading="lazy" src="assets/lavori/05-fuga-di-logan/versione-2.jpg" width="595" height="842" alt="La Fuga di Logan — versione 2"></div></div>
+        <figcaption><span class="role">Versione 2 · mockup libro</span> · Un labirinto a forma di mano e una gemma rossa centrale con il titolo. Bianco, nero e rosso.</figcaption>
+      </figure>
+    </div>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="bozze-set">
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Versione 1</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/05-fuga-di-logan/1-bozze-versione-1/1.jpg" width="1768" height="2500" alt="Bozza versione 1 — 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/05-fuga-di-logan/1-bozze-versione-1/2.jpg" width="1767" height="2500" alt="Bozza versione 1 — 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/05-fuga-di-logan/1-bozze-versione-1/3.jpg" width="595" height="842" alt="Bozza versione 1 — 3"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/05-fuga-di-logan/1-bozze-versione-1/4.jpg" width="595" height="842" alt="Bozza versione 1 — 4"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Versione 2</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/05-fuga-di-logan/2-bozze-versione-2/bozza-1.jpg" width="595" height="842" alt="Bozza versione 2 — 1"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Altre proposte</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/05-fuga-di-logan/3-altre-bozze/bozza-1.jpg" width="1768" height="2500" alt="Altra proposta 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/05-fuga-di-logan/3-altre-bozze/bozza-2.jpg" width="1768" height="2500" alt="Altra proposta 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/05-fuga-di-logan/3-altre-bozze/bozza-3.jpg" width="1768" height="2500" alt="Altra proposta 3"></figure>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 06 SIMBIOSI -->
+<article class="work" id="work-06">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">06</span><span class="corso">Illustrator Avanzato</span></div>
+      <h2><em>Simbiosi</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno vettoriale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Poster in grafica vettoriale. Da uno smartphone crescono fiori e viticci su fondo scuro: natura e tecnologia insieme.</p>
+    </div>
+    <div class="mockup-poster"><div class="frame"><img class="zoomable" loading="lazy" src="assets/lavori/06-simbiosi/finale.jpg" width="1296" height="1728" alt="Poster Simbiosi"></div></div>
+    <figcaption style="text-align:center;margin-top:1rem"><span class="role">Mockup</span> · Poster.</figcaption>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/06-simbiosi/bozza-1.jpg" width="1767" height="2500" alt="Bozza Simbiosi"><figcaption>Studio preliminare.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 07 RISE -->
+<article class="work" id="work-07">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">07</span><span class="corso">Illustrator Avanzato</span></div>
+      <h2><em>Rise</em> — Packaging caffè</h2>
+      <div class="meta"><span>Tecnica · <b>Disegno vettoriale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Packaging per una linea di caffè in tre miscele (Nativo, Arabico, Antico). Illustrazione vettoriale.</p>
+    </div>
+    <figure class="single wide img-shadow">
+      <img class="zoomable" loading="lazy" src="assets/lavori/07-rise-caffe/mockup.jpg" width="2500" height="1667" alt="Mockup del packaging Rise">
+      <figcaption><span class="role">Mockup packaging</span> · Le tre miscele sulla confezione.</figcaption>
+    </figure>
+    <div class="grid three img-shadow" style="margin-top:2rem;max-width:680px;margin-left:auto;margin-right:auto">
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/07-rise-caffe/miscela-1.jpg" width="270" height="652" alt="Miscela Nativo"><figcaption>Nativo.</figcaption></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/07-rise-caffe/miscela-2.jpg" width="271" height="653" alt="Miscela Arabico"><figcaption>Arabico.</figcaption></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/07-rise-caffe/miscela-3.jpg" width="271" height="653" alt="Miscela Antico"><figcaption>Antico.</figcaption></figure>
+    </div>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/07-rise-caffe/bozza-1.jpg" width="2500" height="1768" alt="Bozza Rise"><figcaption>Studio preliminare.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 08 LA CASA IN FONDO ALLA STRADA -->
+<article class="work" id="work-08">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">08</span><span class="corso">Cover III</span></div>
+      <h2><em>La Casa in Fondo alla Strada</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Copertina per un racconto horror. Quattro bambini in costume davanti a una villa in fondo alla strada.</p>
+    </div>
+    <figure>
+      <div class="mockup-book"><div class="book"><img class="zoomable" loading="lazy" src="assets/lavori/08-casa-in-fondo-alla-strada/finale.jpg" width="1713" height="2575" alt="Copertina La Casa in Fondo alla Strada"></div></div>
+      <figcaption style="text-align:center"><span class="role">Cover · mockup libro</span></figcaption>
+    </figure>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/08-casa-in-fondo-alla-strada/bozza-1.jpg" width="2500" height="2032" alt="Bozza La Casa in Fondo alla Strada"><figcaption>Studio preliminare.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 09 UN NUOVO INIZIO -->
+<article class="work" id="work-09">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">09</span><span class="corso">Cover III</span></div>
+      <h2><em>Un Nuovo Inizio</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Copertina per un romanzo di formazione. Duotone viola e lilla.</p>
+    </div>
+    <figure>
+      <div class="mockup-book"><div class="book"><img class="zoomable" loading="lazy" src="assets/lavori/09-un-nuovo-inizio/finale.jpg" width="1713" height="2575" alt="Copertina Un Nuovo Inizio"></div></div>
+      <figcaption style="text-align:center"><span class="role">Cover · mockup libro</span></figcaption>
+    </figure>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="bozze-set">
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Bozze</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/09-un-nuovo-inizio/1-bozze/1.jpg" width="1663" height="2500" alt="Bozza 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/09-un-nuovo-inizio/1-bozze/2.jpg" width="1663" height="2500" alt="Bozza 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/09-un-nuovo-inizio/1-bozze/3.jpg" width="1663" height="2500" alt="Bozza 3"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/09-un-nuovo-inizio/1-bozze/4.jpg" width="1713" height="2575" alt="Bozza 4"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/09-un-nuovo-inizio/1-bozze/5.jpg" width="1713" height="2575" alt="Bozza 5"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Altre proposte</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/09-un-nuovo-inizio/2-altre-bozze/1.jpg" width="1663" height="2500" alt="Altra proposta 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/09-un-nuovo-inizio/2-altre-bozze/2.jpg" width="1663" height="2500" alt="Altra proposta 2"></figure>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 10 ECLISSI AL SIPARIO -->
+<article class="work" id="work-10">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">10</span><span class="corso">AI</span></div>
+      <h2><em>Eclissi al Sipario</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Carte illustrate per un gioco da tavolo investigativo ispirato all'estetica di Cluedo. Illustrazioni in bianco e nero.</p>
+      <p class="note">I disegni sono realizzati da Chiara; il mockup e le pedine 3D dell'oggetto sono stati realizzati con ChatGPT Pro — oggetto stesso del corso.</p>
+    </div>
+    <div class="card-set">
+      <div class="card-col">
+        <h3>Clown Silente</h3>
+        <div class="pair">
+          <img class="zoomable" loading="lazy" src="assets/lavori/10-eclissi-al-sipario/clown-illustrazione.jpg" width="1341" height="2304" alt="Clown Silente — illustrazione">
+          <img class="zoomable" loading="lazy" src="assets/lavori/10-eclissi-al-sipario/clown-carta.png" width="1024" height="1536" alt="Clown Silente — carta">
+          <img class="zoomable" loading="lazy" src="assets/lavori/10-eclissi-al-sipario/clown-3d.png" width="1024" height="1536" alt="Clown Silente — pedina 3D">
+        </div>
+      </div>
+      <div class="card-col">
+        <h3>Violino Scordato</h3>
+        <div class="pair">
+          <img class="zoomable" loading="lazy" src="assets/lavori/10-eclissi-al-sipario/violino-illustrazione.jpg" width="1340" height="2304" alt="Violino Scordato — illustrazione">
+          <img class="zoomable" loading="lazy" src="assets/lavori/10-eclissi-al-sipario/violino-carta.png" width="1024" height="1536" alt="Violino Scordato — carta">
+          <img class="zoomable" loading="lazy" src="assets/lavori/10-eclissi-al-sipario/violino-3d.png" width="1024" height="1536" alt="Violino Scordato — pedina 3D">
+        </div>
+      </div>
+      <div class="card-col">
+        <h3>Stanza degli Specchi Incrinati</h3>
+        <div class="pair">
+          <img class="zoomable" loading="lazy" src="assets/lavori/10-eclissi-al-sipario/specchi-illustrazione.jpg" width="1340" height="2321" alt="Stanza degli Specchi Incrinati — illustrazione">
+          <img class="zoomable" loading="lazy" src="assets/lavori/10-eclissi-al-sipario/specchi-carta.png" width="1024" height="1536" alt="Stanza degli Specchi Incrinati — carta">
+        </div>
+      </div>
+    </div>
+    <figure class="single wide img-shadow" style="margin-top:2.4rem">
+      <img class="zoomable" loading="lazy" src="assets/lavori/10-eclissi-al-sipario/composizione.png" width="1536" height="1024" alt="Composizione del gioco">
+      <figcaption><span class="role">Composizione del gioco</span> · mockup realizzato con ChatGPT Pro.</figcaption>
+    </figure>
+  </div>
+</article>
+
+<!-- 11 JOURNEY ROVE -->
+<article class="work" id="work-11">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">11</span><span class="corso">ADV</span></div>
+      <h2><em>Journey</em> — Rove</h2>
+      <div class="meta"><span>Tecnica · <b>Disegno digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Packaging per una scatola da scarpe. Illustrazione doodle in nero e grigio su tutte le facce, dalla fustella al mockup.</p>
+    </div>
+    <div class="stack">
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/mockup-1.jpg" width="2500" height="1875" alt="Mockup scatola 1"><figcaption><span class="role">Mockup packaging</span></figcaption></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/mockup-2.jpg" width="2500" height="1875" alt="Mockup scatola 2"><figcaption><span class="role">Mockup packaging</span></figcaption></figure>
+      </div>
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/coperchio.jpg" width="2500" height="1768" alt="Fustella coperchio"><figcaption>Fustella — coperchio.</figcaption></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/corpo.jpg" width="2500" height="1852" alt="Fustella corpo"><figcaption>Fustella — corpo.</figcaption></figure>
+      </div>
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/sneakers-1.jpg" width="2500" height="1406" alt="Sneakers 1"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/sneakers-2.jpg" width="2500" height="1406" alt="Sneakers 2"></figure>
+      </div>
+    </div>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="bz-strip">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/bozze/1.jpg" width="8480" height="11405" alt="Bozza 1"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/bozze/2.jpg" width="7000" height="9796" alt="Bozza 2"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/bozze/3.jpg" width="11363" height="7605" alt="Bozza 3"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/bozze/4.jpg" width="14113" height="9534" alt="Bozza 4"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/bozze/5.jpg" width="7405" height="9763" alt="Bozza 5"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/bozze/6.jpg" width="6280" height="4441" alt="Bozza 6"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/11-journey-rove/bozze/7.jpg" width="7399" height="5482" alt="Bozza 7"></figure>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 12 FLAYTRAPS -->
+<article class="work" id="work-12">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">12</span><span class="corso">BoardGame</span></div>
+      <h2><em>Flaytraps</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Packaging per un gioco da tavolo, dalla copertina alle tile di gioco.</p>
+    </div>
+    <div class="stack">
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/01-cover/box-cover.jpg" width="1772" height="1772" alt="Box Flytraps — fronte"><figcaption>Box — fronte.</figcaption></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/01-cover/box-retro.jpg" width="4574" height="4574" alt="Box Flytraps — retro"><figcaption>Box — retro.</figcaption></figure>
+      </div>
+      <figure class="single wide img-shadow">
+        <img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/02-mockup/mockup.jpg" width="2500" height="1897" alt="Mockup box Flytraps">
+        <figcaption><span class="role">Mockup box</span></figcaption>
+      </figure>
+      <div class="grid four img-shadow"><span class="label" style="grid-column:1/-1;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">Plant tiles</span>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/03-plant-tiles/1.jpg" width="1299" height="1299" alt="Plant tile 1"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/03-plant-tiles/2.jpg" width="1299" height="1299" alt="Plant tile 2"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/03-plant-tiles/3.jpg" width="1299" height="1299" alt="Plant tile 3"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/03-plant-tiles/4.jpg" width="1299" height="1299" alt="Plant tile 4"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/03-plant-tiles/5.jpg" width="1299" height="1299" alt="Plant tile 5"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/03-plant-tiles/6.jpg" width="1299" height="1299" alt="Plant tile 6"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/03-plant-tiles/7.jpg" width="1299" height="1299" alt="Plant tile 7"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/03-plant-tiles/8.jpg" width="1299" height="1299" alt="Plant tile 8"></figure>
+      </div>
+      <div class="grid four img-shadow"><span class="label" style="grid-column:1/-1;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">Pot tiles</span>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/04-pot-tiles/1.jpg" width="5906" height="4252" alt="Pot tile 1"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/04-pot-tiles/2.jpg" width="5906" height="4252" alt="Pot tile 2"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/04-pot-tiles/3.jpg" width="5906" height="4252" alt="Pot tile 3"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/04-pot-tiles/4.jpg" width="5906" height="4252" alt="Pot tile 4"></figure>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span class="label" style="display:block;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">Composizione del gioco</span>
+        <figure class="single wide" style="margin:0">
+          <img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/definitivi/06-composizione-gioco/versione-2.png" width="4724" height="5906" alt="Composizione del gioco" style="filter:drop-shadow(0 14px 24px rgba(33,29,26,.28))">
+        </figure>
+      </div>
+    </div>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="bozze-set">
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Box — proposte</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/01-bozze-box-proposte/1.jpg" width="1772" height="1772" alt="Proposta box 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/01-bozze-box-proposte/2.jpg" width="1772" height="1772" alt="Proposta box 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/01-bozze-box-proposte/3.jpg" width="1772" height="1772" alt="Proposta box 3"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Box — finale</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/01.jpg" width="1772" height="1772" alt="Bozza box finale 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/02.jpg" width="1772" height="1772" alt="Bozza box finale 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/03.jpg" width="1772" height="1772" alt="Bozza box finale 3"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/04.jpg" width="1772" height="1772" alt="Bozza box finale 4"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/05.jpg" width="1772" height="1772" alt="Bozza box finale 5"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/06.jpg" width="1772" height="1772" alt="Bozza box finale 6"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/07.jpg" width="1772" height="1772" alt="Bozza box finale 7"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/08.jpg" width="1772" height="1772" alt="Bozza box finale 8"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/09.jpg" width="1772" height="1772" alt="Bozza box finale 9"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/10.jpg" width="1772" height="1772" alt="Bozza box finale 10"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/02-bozze-box-finale/11.jpg" width="1772" height="1772" alt="Bozza box finale 11"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Plant tiles</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/01.jpg" width="2388" height="1668" alt="Bozza plant tile 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/02.jpg" width="1299" height="1299" alt="Bozza plant tile 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/03.jpg" width="1299" height="1299" alt="Bozza plant tile 3"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/04.jpg" width="1299" height="1299" alt="Bozza plant tile 4"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/05.jpg" width="1299" height="1299" alt="Bozza plant tile 5"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/06.JPG" width="1299" height="1299" alt="Bozza plant tile 6"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/07.JPG" width="1299" height="1299" alt="Bozza plant tile 7"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/08.JPG" width="1299" height="1299" alt="Bozza plant tile 8"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/09.JPG" width="1299" height="1299" alt="Bozza plant tile 9"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/10.JPG" width="1299" height="1299" alt="Bozza plant tile 10"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/11.JPG" width="1299" height="1299" alt="Bozza plant tile 11"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/12.JPG" width="1299" height="1299" alt="Bozza plant tile 12"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/03-bozze-plant-tiles/13.JPG" width="1299" height="1299" alt="Bozza plant tile 13"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Pot tiles</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/04-bozze-pot-tiles/1.JPG" width="5906" height="4252" alt="Bozza pot tile 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/04-bozze-pot-tiles/2.JPG" width="5906" height="4252" alt="Bozza pot tile 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/04-bozze-pot-tiles/3.JPG" width="5906" height="4252" alt="Bozza pot tile 3"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/12-flaytraps/bozze/04-bozze-pot-tiles/4.JPG" width="5906" height="4252" alt="Bozza pot tile 4"></figure>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 13 ANSIA -->
+<article class="work" id="work-13">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">13</span><span class="corso">Albo illustrato</span></div>
+      <h2><em>Ansia</em></h2>
+      <div class="meta"><span>Tecnica · <b>Matite</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Albo illustrato sull'ansia, rappresentata come un mostro invisibile che prende forma. Dal concept al character design allo storyboard.</p>
+      <p class="note">Di questo lavoro non esiste un progetto finito: è presentato come quaderno di progettazione e processo dell'albo.</p>
+    </div>
+    <div class="bozze">
+      <div class="label">Quaderno di progettazione · concept, character design, storyboard</div>
+      <div class="grid four img-shadow" id="ansia-grid"></div>
+    </div>
+  </div>
+</article>
+
+<!-- 14 UN DRAGO NEL CORTILE -->
+<article class="work" id="work-14">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">14</span><span class="corso">Albo illustrato</span></div>
+      <h2><em>Un Drago nel Cortile</em></h2>
+      <div class="meta"><span>Tecnica · <b>Tecnica mista — tempere gouache e matite colorate</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Illustrazione con un triangolo rosso come elemento centrale della composizione, accompagnata dall'apertura sviluppata in classe.</p>
+    </div>
+    <figure class="single wide img-shadow">
+      <img class="zoomable" loading="lazy" src="assets/lavori/14-drago-nel-cortile/finale.jpg" width="2500" height="1006" alt="Un Drago nel Cortile — apertura">
+      <figcaption><span class="role">Apertura</span></figcaption>
+    </figure>
+    <figure class="gif-wrap" style="margin-top:2rem">
+      <span class="badge">GIF · stop-motion</span>
+      <img loading="lazy" src="assets/lavori/14-drago-nel-cortile/stop-motion.gif" width="900" height="440" alt="Stop-motion di Un Drago nel Cortile">
+      <figcaption style="text-align:center">Breve stop-motion.</figcaption>
+    </figure>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="bz-strip">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/14-drago-nel-cortile/bozza-1.jpg" width="1570" height="2227" alt="Bozza 1"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/14-drago-nel-cortile/bozza-2.jpg" width="2500" height="924" alt="Bozza 2"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/14-drago-nel-cortile/bozza-3.jpg" width="1251" height="873" alt="Bozza 3"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/14-drago-nel-cortile/bozza-4.jpg" width="1072" height="1905" alt="Bozza 4"></figure>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 15 EVA NON SI VESTE -->
+<article class="work" id="work-15">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">15</span><span class="corso">Albo illustrato</span></div>
+      <h2><em>Eva non si veste</em></h2>
+      <div class="meta"><span>Tecnica · <b>Tecnica mista — tempere gouache, matite colorate, pastelli a olio</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Illustrazione con le otto fasciate e relativa apertura sviluppata in classe.</p>
+    </div>
+    <div class="grid three img-shadow">
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/finale-1.jpg" width="1730" height="2500" alt="Eva non si veste 1"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/finale-2.jpg" width="1707" height="2500" alt="Eva non si veste 2"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/finale-3.jpg" width="1700" height="2500" alt="Eva non si veste 3"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/finale-4.jpg" width="1677" height="2500" alt="Eva non si veste 4"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/finale-5.jpg" width="873" height="2500" alt="Eva non si veste 5"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/finale-6.jpg" width="866" height="2500" alt="Eva non si veste 6"></figure>
+    </div>
+    <figure class="gif-wrap" style="margin-top:2rem">
+      <span class="badge">GIF · stop-motion</span>
+      <img loading="lazy" src="assets/lavori/15-eva-non-si-veste/stop-motion.gif" width="650" height="900" alt="Stop-motion di Eva non si veste">
+      <figcaption style="text-align:center">Breve stop-motion.</figcaption>
+    </figure>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="bz-strip">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/bozza-1.jpg" width="2388" height="1668" alt="Bozza 1"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/bozza-2.jpg" width="929" height="1310" alt="Bozza 2"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/bozza-3.jpg" width="873" height="2500" alt="Bozza 3"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/bozza-4.jpg" width="2500" height="1763" alt="Bozza 4"></figure>
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/15-eva-non-si-veste/bozza-5.jpg" width="1757" height="2500" alt="Bozza 5"></figure>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 16 I SOCIAL MEDIA SONO PIÙ SIMILI ALLE SIGARETTE O AL CIBO SPAZZATURA? -->
+<article class="work" id="work-16">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">16</span><span class="corso">Magazine</span></div>
+      <h2><em>I Social Media sono più simili alle Sigarette o al Cibo Spazzatura?</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Illustrazione editoriale sull'accesso dei bambini ai social media e sulla loro regolamentazione.</p>
+    </div>
+    <figure class="single wide img-shadow">
+      <img class="zoomable" loading="lazy" src="assets/lavori/16-social-vs-bambini/finale.jpg" width="2126" height="1418" alt="Social vs Bambini">
+    </figure>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="grid two img-shadow">
+        <figure><img class="zoomable" loading="lazy" src="assets/lavori/16-social-vs-bambini/bozza-1.jpg" width="2126" height="1418" alt="Bozza Social vs Bambini"></figure>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 17 IL PESCE SOSTENIBILE -->
+<article class="work" id="work-17">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">17</span><span class="corso">Magazine</span></div>
+      <h2><em>Il Pesce Sostenibile</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Illustrazione editoriale sulla pesca sostenibile.</p>
+    </div>
+    <figure class="single wide img-shadow">
+      <img class="zoomable" loading="lazy" src="assets/lavori/17-pesca-sostenibile/finale-2.jpg" width="2480" height="3508" alt="Il Pesce Sostenibile">
+    </figure>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="bozze-set">
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Bozze</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/17-pesca-sostenibile/bozze/1.jpg" width="1767" height="2500" alt="Bozza 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/17-pesca-sostenibile/bozze/2.jpg" width="1767" height="2500" alt="Bozza 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/17-pesca-sostenibile/bozze/3.jpg" width="2480" height="3508" alt="Bozza 3"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Altre proposte</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/17-pesca-sostenibile/altre-bozze/1.jpg" width="1767" height="2500" alt="Altra proposta 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/17-pesca-sostenibile/altre-bozze/2.jpg" width="1767" height="2500" alt="Altra proposta 2"></figure>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 18 SUMMER READING -->
+<article class="work" id="work-18">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">18</span><span class="corso">Magazine</span></div>
+      <h2><em>Summer Reading</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Illustrazione editoriale: copertina per la Book Review del <em>The New York Times</em>.</p>
+      <p class="note">Il definitivo a colori è in lavorazione e verrà aggiunto a breve.</p>
+    </div>
+    <div class="bozze">
+      <div class="label">Bozze · Studi preliminari</div>
+      <div class="bozze-set">
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Bozze</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/summer-reading/bozze/1.JPG" width="2163" height="2388" alt="Bozza 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/summer-reading/bozze/2.jpg" width="2163" height="2388" alt="Bozza 2"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/summer-reading/bozze/3.jpg" width="1400" height="1545" alt="Bozza 3"></figure>
+          </div>
+        </div>
+
+        <div class="bozze-group">
+          <h4 class="bz-title">Altre proposte</h4>
+          <div class="bz-strip">
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/summer-reading/altre-bozze/1.JPG" width="2163" height="2388" alt="Altra proposta 1"></figure>
+            <figure><img class="zoomable" loading="lazy" src="assets/lavori/summer-reading/altre-bozze/2.JPG" width="2163" height="2388" alt="Altra proposta 2"></figure>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- 19 SPOT -->
+<article class="work" id="work-19">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">19</span><span class="corso">Magazine</span></div>
+      <h2><em>Spot</em></h2>
+      <div class="meta"><span>Tecnica · <b>Disegno digitale</b></span><span>Anno · <b>2025/2026</b></span></div>
+      <p class="didascalia">Serie di spot illustrate. Scene di vita quotidiana con il mio cane, in bianco, nero e accento rosso.</p>
+    </div>
+    <div class="grid four img-shadow">
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/19-spot-clio/spot-1.jpg" width="1181" height="1181" alt="Spot 1"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/19-spot-clio/spot-2.jpg" width="1181" height="1181" alt="Spot 2"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/19-spot-clio/spot-3.jpg" width="1181" height="1181" alt="Spot 3"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/19-spot-clio/spot-4.jpg" width="1181" height="1181" alt="Spot 4"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/19-spot-clio/spot-5.jpg" width="1181" height="1181" alt="Spot 5"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/19-spot-clio/spot-6.jpg" width="1181" height="1181" alt="Spot 6"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/19-spot-clio/spot-7.jpg" width="1181" height="1181" alt="Spot 7"></figure>
+      <figure><img class="zoomable" loading="lazy" src="assets/lavori/19-spot-clio/spot-8.jpg" width="1181" height="1181" alt="Spot 8"></figure>
+    </div>
+  </div>
+</article>
+
+<!-- 20 ALCUNI PROGETTI DEL SECONDO ANNO -->
+<article class="work" id="work-20">
+  <div class="wrap">
+    <div class="scheda">
+      <div class="top"><span class="num">20</span><span class="corso">Secondo anno</span></div>
+      <h2><em>Alcuni Progetti</em> del Secondo Anno</h2>
+      <div class="meta"><span>Tecnica · <b>Tecniche miste</b></span><span>Anno · <b>2024/2025</b></span></div>
+      <p class="didascalia">Una carrellata di definitivi realizzati durante i moduli del secondo anno.</p>
+    </div>
+    <div class="stack">
+      <figure class="single wide">
+        <div class="grid three img-shadow">
+          <figure><img class="zoomable" loading="lazy" src="assets/lavori/20-alcuni-progetti-secondo-anno/01.jpg" width="1513" height="2313" alt="Supertoys che durano tutta l'estate 1"></figure>
+          <figure><img class="zoomable" loading="lazy" src="assets/lavori/20-alcuni-progetti-secondo-anno/02.jpg" width="1851" height="2704" alt="Supertoys che durano tutta l'estate 2"></figure>
+          <figure><img class="zoomable" loading="lazy" src="assets/lavori/20-alcuni-progetti-secondo-anno/03.jpg" width="3226" height="1917" alt="Supertoys che durano tutta l'estate 3"></figure>
+        </div>
+        <figcaption><span class="role">Supertoys che durano tutta l'estate</span> · esercizio per il modulo di Storytelling.</figcaption>
+      </figure>
+      <figure class="single wide img-shadow">
+        <img class="zoomable" loading="lazy" src="assets/lavori/20-alcuni-progetti-secondo-anno/04.jpg" width="3542" height="3542" alt="The Big Taste">
+        <figcaption><span class="role">The Big Taste</span> · esercizio per il modulo di Illustrator base.</figcaption>
+      </figure>
+      <figure class="single wide img-shadow">
+        <img class="zoomable" loading="lazy" src="assets/lavori/20-alcuni-progetti-secondo-anno/05.PNG" width="2009" height="2831" alt="Cover del libro La Signorina Else">
+        <figcaption><span class="role">La Signorina Else</span> · cover per un libro, esercizio per il modulo di Concetti di Grafica.</figcaption>
+      </figure>
+      <figure class="single wide img-shadow">
+        <img class="zoomable" loading="lazy" src="assets/lavori/20-alcuni-progetti-secondo-anno/06.JPG" width="2480" height="1772" alt="Illustrazione sui nomi vietati per i cibi vegetali">
+        <figcaption><span class="role">Nomi vietati per i cibi vegetali</span> · illustrazione editoriale, esercizio per il modulo di Visualizzare i Concetti.</figcaption>
+      </figure>
+      <figure class="single wide img-shadow">
+        <img class="zoomable" loading="lazy" src="assets/lavori/20-alcuni-progetti-secondo-anno/07.jpg" width="4488" height="2303" alt="Illustrazione di interno per un albo illustrato">
+        <figcaption><span class="role">Interno per un libro per l'infanzia</span> · esercizio per il modulo di Photoshop base.</figcaption>
+      </figure>
+      <figure class="single wide img-shadow">
+        <img class="zoomable" loading="lazy" src="assets/lavori/20-alcuni-progetti-secondo-anno/08.jpg" width="3543" height="3012" alt="La principessa e il ranocchio">
+        <figcaption><span class="role">La Principessa e il Ranocchio</span> · dalla fiaba dei fratelli Grimm, esercizio per il modulo di Photoshop base.</figcaption>
+      </figure>
+      <figure class="single wide img-shadow">
+        <img class="zoomable" loading="lazy" src="assets/lavori/20-alcuni-progetti-secondo-anno/09.JPG" width="1639" height="2185" alt="Gatto nero">
+        <figcaption><span class="role">Gatto nero</span> · illustrazione per un contest, realizzata il primo anno.</figcaption>
+      </figure>
+    </div>
+  </div>
+</article>
+
+</main>
+
+<!-- ===================== RINGRAZIAMENTI ===================== -->
+<section class="section thanks" id="grazie">
+  <div class="wrap">
+    <p class="eyebrow">Ringraziamenti</p>
+    <h2>Grazie</h2>
+    <!-- Personalizza pure questo testo con i nomi che desideri ringraziare -->
+    <p>Grazie ai docenti e alla Scuola Internazionale di Comics di Milano, per gli stimoli, la pazienza e lo spazio in cui crescere. Grazie ai compagni di corso, con cui ho condiviso scadenze, dubbi e tante risate. E grazie alla mia famiglia e agli amici, che hanno creduto in questo ritorno al disegno prima ancora che lo facessi io.</p>
+    <p class="sign">— Chiara Buscemi</p>
+    <p class="foot">
+      Chiara Buscemi · <a href="mailto:chiarabuscemi098@gmail.com">chiarabuscemi098@gmail.com</a> · 333 507 6393 ·
+      <a href="https://instagram.com/persefone_art" target="_blank" rel="noopener">@persefone_art</a><br>
+      Portfolio 3° anno · Scuola Internazionale di Comics, Milano · 2025/2026
+    </p>
+  </div>
+</section>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div class="lb" id="lightbox" aria-hidden="true">
+  <button class="close" aria-label="Chiudi">&times;</button>
+  <button class="lb-nav lb-prev" aria-label="Bozza precedente" hidden>&#8249;</button>
+  <img src="" alt="">
+  <button class="lb-nav lb-next" aria-label="Bozza successiva" hidden>&#8250;</button>
+</div>
+<button class="scroll-top" id="scrollTop" aria-label="Torna su">↑</button>
+
+<script>
+/* ---- popola il quaderno di Ansia (17 pagine) ---- */
+(function(){
+  var grid=document.getElementById('ansia-grid');
+  var dims=[[1774,2500],[1188,2500],[1749,2500],[1747,2500],[1774,2500],[1770,2500],[1764,2500],[1767,2500],[1841,2500],[1689,2500],[1754,2500],[1705,2500],[1731,2500],[1638,2500],[1779,2500],[1723,2500],[1758,2500]];
+  if(grid){
+    for(var i=1;i<=17;i++){
+      var n=(i<10?'0':'')+i;
+      var f=document.createElement('figure');
+      var im=document.createElement('img');
+      im.className='zoomable'; im.loading='lazy';
+      im.width=dims[i-1][0]; im.height=dims[i-1][1];
+      im.src='assets/lavori/13-ansia/pagina-'+n+'.jpg';
+      im.alt='Quaderno di progettazione — pagina '+i;
+      im.onerror=function(){this.parentNode.remove();};
+      f.appendChild(im); grid.appendChild(f);
+    }
+  }
+})();
+
+/* ---- compare slider B&N <-> colore ---- */
+document.querySelectorAll('[data-compare]').forEach(function(c){
+  var range=c.querySelector('input[type=range]');
+  function set(v){ c.style.setProperty('--pos', v+'%'); }
+  set(range.value);
+  range.addEventListener('input', function(){ set(range.value); });
+});
+
+/* ---- nav: ombra su scroll + back-to-top ---- */
+var nav=document.getElementById('nav'), toTopBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll', function(){
+  var y=window.scrollY;
+  nav.classList.toggle('scrolled', y>40);
+  toTopBtn.classList.toggle('show', y>700);
+}, {passive:true});
+toTopBtn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+/* ---- lightbox ---- */
+var lb=document.getElementById('lightbox'), lbImg=lb.querySelector('img'), lbScrollY=0;
+var lbPrev=lb.querySelector('.lb-prev'), lbNext=lb.querySelector('.lb-next');
+var lbGallery=[], lbIndex=-1;
+
+function bozzeGalleryFor(img){
+  var bozze=img.closest('.bozze');
+  if(!bozze) return null;
+  var scope=img.closest('.bz-strip')||bozze;
+  return Array.prototype.slice.call(scope.querySelectorAll('.zoomable'));
+}
+function showLBImage(){
+  var z=lbGallery[lbIndex];
+  lbImg.src=z.src; lbImg.alt=z.alt||'';
+  var multi=lbGallery.length>1;
+  lbPrev.hidden=!multi; lbNext.hidden=!multi;
+}
+function openLB(z){
+  lbScrollY=window.scrollY;
+  lbGallery=bozzeGalleryFor(z)||[z];
+  lbIndex=lbGallery.indexOf(z);
+  showLBImage();
+  lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+  document.body.style.top=(-lbScrollY)+'px';
+  document.body.classList.add('lb-lock');
+}
+function closeLB(){
+  lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); lbImg.src='';
+  document.body.classList.remove('lb-lock');
+  document.body.style.top='';
+  window.scrollTo({top:lbScrollY, behavior:'instant'});
+}
+function stepLB(dir){
+  if(lbGallery.length<2) return;
+  lbIndex=(lbIndex+dir+lbGallery.length)%lbGallery.length;
+  showLBImage();
+}
+document.addEventListener('click', function(e){
+  var z=e.target.closest('.zoomable');
+  if(z){ e.preventDefault(); openLB(z); return; }
+  if(e.target.closest('.lb-prev')){ stepLB(-1); return; }
+  if(e.target.closest('.lb-next')){ stepLB(1); return; }
+  if(e.target.closest('#lightbox')){ closeLB(); }
+});
+document.addEventListener('keydown', function(e){
+  if(!lb.classList.contains('open')) return;
+  if(e.key==='Escape') closeLB();
+  else if(e.key==='ArrowLeft') stepLB(-1);
+  else if(e.key==='ArrowRight') stepLB(1);
+});
+
+/* ---- correzione anchor scroll: rimisura e ricorregge dopo che immagini/font hanno finito di caricare ---- */
+(function(){
+  function correct(){
+    var id=location.hash.slice(1);
+    if(!id) return;
+    var el=document.getElementById(id);
+    if(!el) return;
+    var top=el.getBoundingClientRect().top+window.scrollY-86;
+    if(Math.abs(window.scrollY-top)>2){ window.scrollTo({top:top, behavior:'auto'}); }
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      setTimeout(correct,700);
+      setTimeout(correct,1600);
+    });
+  });
+})();
+</script>
+</body>
+</html>
